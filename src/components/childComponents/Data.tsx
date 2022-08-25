@@ -31,6 +31,7 @@ export const Data = () => {
 
 	return (
 		<div className='mainContainer'>
+			<h1 style={{ marginBottom: "3%" }}>SpaceX Launchpads</h1>
 			{data.map((items, id) => {
 				return (
 					<Card
