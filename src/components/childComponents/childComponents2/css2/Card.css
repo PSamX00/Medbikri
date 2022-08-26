@@ -103,3 +103,49 @@
 .launches>a{
     text-decoration: none;
 }
+
+
+@media screen and (max-width: 560px) {
+    
+    .cardContainer{
+    max-width: 90%;  
+   border-radius: 15px;
+    flex-direction: column;
+   background-color: rgba(224, 224, 224, 0.542);
+  
+     
+}
+.cardContainer img{
+   width: 100%;
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px ;
+    border-bottom-left-radius: 0px ;
+ 
+}
+.statusRed{
+    margin-left: 0;
+    width: 50%;
+}
+.statusGreen{
+    margin-left: 0;
+    width: 50%;
+}
+.statusGray{
+   
+    margin-left: 0%;
+     width: 50%;
+
+}
+.launches{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+.informationContainer h3{
+
+    text-align: center;
+}
+
+        
+}

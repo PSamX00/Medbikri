@@ -52,7 +52,7 @@ export const Card: React.FC<Props> = ({
 									}}
 								>
 									<Link to={`/${id}`}>
-										Launch{index}
+										Launch {index}
 									</Link>
 								</p>
 							);
