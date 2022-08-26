@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "./childComponents2/Card";
+import { InfinitySpin } from "react-loader-spinner";
 import "../childComponents/css/Data.css";
 
 export const Data = () => {
@@ -14,6 +15,7 @@ export const Data = () => {
 			launches: string[];
 		}[]
 	>([]);
+	const [loading, setLoading] = useState<boolean>(false);
 
 	const fetchingData = async () => {
 		let response = await fetch(
@@ -22,9 +24,11 @@ export const Data = () => {
 		let datas = await response.json();
 		console.log(datas);
 		setData(datas);
+		setLoading(false);
 	};
 
 	useEffect(() => {
+		setLoading(true);
 		fetchingData();
 		console.log(data);
 	}, []);
@@ -32,20 +36,26 @@ export const Data = () => {
 	return (
 		<div className='mainContainer'>
 			<h1 style={{ marginBottom: "3%" }}>SpaceX Launchpads</h1>
-			{data.map((items, id) => {
-				return (
-					<Card
-						key={id}
-						id={items?.id}
-						name={items?.full_name}
-						nick={items?.name}
-						details={items?.details}
-						status={items?.status}
-						image={items?.images.large}
-						launches={items?.launches}
-					/>
-				);
-			})}
+			{loading ? (
+				<div className='loader'>
+					<InfinitySpin width='200' color='#4fa94d' />
+				</div>
+			) : (
+				data.map((items, id) => {
+					return (
+						<Card
+							key={id}
+							id={items?.id}
+							name={items?.full_name}
+							nick={items?.name}
+							details={items?.details}
+							status={items?.status}
+							image={items?.images.large}
+							launches={items?.launches}
+						/>
+					);
+				})
+			)}
 		</div>
 	);
 };

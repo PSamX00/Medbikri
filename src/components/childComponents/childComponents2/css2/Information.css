@@ -48,26 +48,3 @@
     font-family: 'Space Grotesk', sans-serif;
     margin: 1.5%;
 }
-@media screen and (max-width: 768px) {
-    /* .detailsContainer{
-        margin: 0;
-        left: 50%;
-       
-        min-width: 100%; 
-        padding: 0;  
-      
-        
-    }
-    .detailsContainer :nth-child(3){
-        overflow: scroll;
-        max-width: 100%;
-    }
-    .detailsContainer :nth-child(2){
-    font-size: clamp(25px,2vw,14px);
-    font-weight: 500;
-    margin: 1.5%;
-  
-    text-align: center;
-} */
-
-}

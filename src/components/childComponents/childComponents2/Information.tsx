@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../childComponents2/css2/Information.css";
+import { InfinitySpin } from "react-loader-spinner";
 
 export const Information = () => {
 	const [launchInfo, setLaunchInfo] = useState<{
@@ -13,12 +14,13 @@ export const Information = () => {
 		launches: string[];
 		timezone: string;
 	}>();
-
+	const [loading, setLoading] = useState<boolean>(false);
 	const params = useParams();
 
 	let parameterId = params.id;
 
 	useEffect(() => {
+		setLoading(true);
 		fetchingData();
 	}, []);
 
@@ -30,20 +32,32 @@ export const Information = () => {
 		let res = await response.json();
 
 		setLaunchInfo(res);
+		setLoading(false);
 	};
 
 	return (
 		<div className='containerDiv'>
-			<img src={launchInfo?.images.large} className='ImageInfo' />
+			{loading ? (
+				<div className='loader'>
+					<InfinitySpin width='200' color='#4fa94d' />
+				</div>
+			) : (
+				<>
+					<img
+						src={launchInfo?.images.large}
+						className='ImageInfo'
+					/>
 
-			<div className='detailsContainer'>
-				<p>{launchInfo?.name}</p>
+					<div className='detailsContainer'>
+						<p>{launchInfo?.name}</p>
 
-				<p>{launchInfo?.full_name}</p>
+						<p>{launchInfo?.full_name}</p>
 
-				<p>{launchInfo?.details}</p>
-				<p>{launchInfo?.timezone}</p>
-			</div>
+						<p>{launchInfo?.details}</p>
+						<p>{launchInfo?.timezone}</p>
+					</div>
+				</>
+			)}
 		</div>
 	);
 };
