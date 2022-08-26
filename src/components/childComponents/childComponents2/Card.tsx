@@ -41,25 +41,32 @@ export const Card: React.FC<Props> = ({
 					</div>
 					<p>{details}</p>
 
-					{launches.length > 0 ? (
-						launches.slice(0, 3).map((items, index) => {
-							return (
-								<p
-									className='launches'
-									style={{
-										textDecoration:
-											"none",
-									}}
-								>
-									<Link to={`/${id}`}>
-										Launch {index}
-									</Link>
-								</p>
-							);
-						})
-					) : (
-						<p>Launch Not Available</p>
-					)}
+					<div className='launchesContainer'>
+						{launches.length > 0 ? (
+							launches
+								.slice(0, 3)
+								.map((items, index) => {
+									return (
+										<p
+											className='launches'
+											style={{
+												textDecoration:
+													"none",
+											}}
+										>
+											<Link
+												to={`/${id}`}
+											>
+												Launch{" "}
+												{index}
+											</Link>
+										</p>
+									);
+								})
+						) : (
+							<p>Launch Not Available</p>
+						)}
+					</div>
 				</div>
 			</div>
 		</>
